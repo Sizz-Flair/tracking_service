@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:include="~{layout/header}"></th:block>
+    <div class="card-header text-center">
+        <strong><h2><p class="font-weight-bold">실시간 배송정보</p></h2></strong>
+    </div>
 </head>
+<br/>
 <body>
-$END$
+<div class="container-md col-sm-4 col-md-4 col-lg-4 col-xl-4">
+    <form action="/test" method="get">
+        <div class="input-group mb-3">
+            <input type="text" name="hwbNo" class="form-control" placeholder="-를 제외한 숫자만 입력해주세요." aria-label="Username" aria-describedby="basic-addon1">
+            <button type="submit" class="btn btn-success">검색</button>
+        </div>
+    </form>
+</div>
+
 </body>
 </html>

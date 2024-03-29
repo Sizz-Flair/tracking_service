@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:include="~{layout/header}"></th:block>
+    <div class="card-header text-center">
+      <strong><h2><p class="font-weight-bold">실시간 배송정보</p></h2></strong>
+    </div>
+  </head>
 </head>
 <body>
-$END$
+<div class="container-sm text-center">
+  <div class="alert alert-primary" role="alert">
+    <strong><p th:text="${hwbNo}"></p></strong>
+  </div>
+  <div th:each="item : ${data}">
+    <div th:if="${item != ''}" class="alert alert-primary" role="alert">
+      <strong><p th:text="${item}"></p></strong>
+    </div>
+  </div>
+</div>
 </body>
 </html>
