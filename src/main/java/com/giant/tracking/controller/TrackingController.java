@@ -42,20 +42,44 @@ public class TrackingController {
         MultiValueMap<String, Object> parts = new LinkedMultiValueMap<>();
         parts.add("apikey", "935ac5b93ac1faf3d8beb75c7b76dae0");
         parts.add("req_function","getTrackStatus");
-        parts.add("send_data","EFS1004061775");
+        parts.add("send_data",hwbNo);
         String data = restClientService.postFormUrlEncoded(parts);
 
         String[] responseDataSplit = data.split("\\|");
         String[] hwbInfo = responseDataSplit[1].split("\r\n");
         String conInfo = responseDataSplit[11].split("\r\n")[0];
 
+//        0		Post 데이터 확인 메시지
+//        1		송장번호(예약번호)
+//        2		발송품 참조 번호
+//        3		배송 회사명
+//        4		배송 번호
+//        5		최종 배송 상태 코드1)
+//        6		최종 배송 상태 값1)
+//        7		최종 배송 상태 일시
+//        8		실측 무게 2)
+//        9		적용 서비스 타입 3)
+//        10		배송비 4)
+//        11		배송 상태 국가
+
+
         TrackingDto trackingDto = TrackingDto.builder()
-                .hwb(hwbInfo[1]).agentName(responseDataSplit[3])
+                .hwb(hwbInfo[1])
+                .agentName(responseDataSplit[3])
+                .deliveryStatusCode(responseDataSplit[5])
+                .deliveryStatus(responseDataSplit[6])
+                .deliverDay(responseDataSplit[7])
+                .deliveryCode(responseDataSplit[4])
+                .deliveryWeight(responseDataSplit[8])
+                .DeliveryPrice(responseDataSplit[10])
+                .deliveryCon(conInfo)
+                .build();
 
         System.out.println(hwbNo);
         List<String> modelList = new ArrayList<>();
 
         model.addAttribute("data", data.split("\\|"));
+        model.addAttribute("trackingDto", trackingDto);
         model.addAttribute("hwbNo", hwbNo);
 
         return "/trackingList";

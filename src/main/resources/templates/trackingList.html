@@ -5,19 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <th:block th:include="~{layout/header}"></th:block>
-    <div class="card-header text-center">
-      <strong><h2><p class="font-weight-bold">실시간 배송정보</p></h2></strong>
-    </div>
+<!--    <div class="card-header text-center">-->
+<!--      <strong><h2><p class="font-weight-bold">실시간 배송정보</p></h2></strong>-->
+<!--    </div>-->
   </head>
 </head>
 <body>
 <div class="container-sm text-center">
-  <div class="alert alert-primary" role="alert">
-    <strong><p th:text="${hwbNo}"></p></strong>
-  </div>
-  <div th:each="item : ${data}">
-    <div th:if="${item != ''}" class="alert alert-primary" role="alert">
-      <strong><p th:text="${item}"></p></strong>
+<br/>
+  <div class="card rounded-pill p-3 border-bottom">
+      <div class="form-group text-center">
+        <strong><h1 th:text="${trackingDto.deliveryStatus}"></h1></strong>
+      </div>
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div class="col-4">
+          <strong><h4 th:text="${trackingDto.deliveryCode}"></h4></strong>
+        </div>
+        <div class="col-4">
+          <strong><h4 th:text="${trackingDto.agentName}"></h4></strong>
+        </div>
+        <div class="col-4">
+          <strong><h4 th:text="${trackingDto.deliveryCon}"></h4></strong>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="m-1">
+      <p>
+        <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <i class="bi bi-arrow-bar-down"> details</i>
+        </a>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+        </div>
+      </div>
     </div>
   </div>
 </div>

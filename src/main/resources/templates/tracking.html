@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <th:block th:include="~{layout/header}"></th:block>
     <div class="card-header text-center">
-        <strong><h2><p class="font-weight-bold">실시간 배송정보</p></h2></strong>
+        <strong><h2><p class="font-weight-bold">BIGC 배송조회</p></h2></strong>
     </div>
 </head>
 <br/>
 <body>
-<div class="container-md col-sm-4 col-md-4 col-lg-4 col-xl-4">
-    <form action="/test" method="get">
-        <div class="input-group mb-3">
-            <input type="text" name="hwbNo" class="form-control" placeholder="-를 제외한 숫자만 입력해주세요." aria-label="Username" aria-describedby="basic-addon1">
-            <button type="submit" class="btn btn-success">검색</button>
-        </div>
+<div class="container col-sm-4 col-md-4 col-lg-6 col-xl-6">
+    <form class="input-line d-flex" action="/test" method="get">
+        <i class="bi bi-box-seam" style="font-size: 1.8rem;"></i>
+        <input type="text" name="hwbNo" style="width: 100%" class="" placeholder="-를 제외한 숫자만 입력해주세요." aria-label="Username" aria-describedby="basic-addon1">
+        <button type="submit" class="btn btn-success"><i class="bi bi-search"></i></button>
     </form>
 </div>
-
 </body>
 </html>
