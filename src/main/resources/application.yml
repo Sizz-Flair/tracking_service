@@ -1,0 +1,31 @@
+#spring.application.name=tracking
+#
+#spring.thymeleaf.cache=false
+#spring.thymeleaf.prefix=classpath:/templates/
+spring:
+  application:
+    name: tracking
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+  datasource:
+    username: root
+    password: GiantAd^^$
+    url: jdbc:mysql://210.116.92.57:3306/gwms?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialSize: 12
+    maxActive: 24
+    maxIdle: 24
+    maxTotal: 24
+    maxWaitMillis: 3000
+    slowQueryThreshold: 3000
+    hibernate:
+      hbm2ddlAuto: none
+      databaseType: mysql
+      dialect: MySQL57InnoDBDialect
+server:
+  port: 8080
+
+
+
+

@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="~{layout/header}"></th:block>
+    <th:block th:insert="~{layout/header}"></th:block>
     <div class="card-header text-center">
-        <strong><h2><p class="font-weight-bold">BIGC 배송조회</p></h2></strong>
+        <strong><h2><p class="font-weight-bold">GIANT 배송조회</p></h2></strong>
     </div>
 </head>
 <br/>
 <body>
 <div class="container col-sm-4 col-md-4 col-lg-6 col-xl-6">
-    <form class="input-line d-flex" action="/test" method="get">
+    <form class="input-line d-flex" action="/trackingInfo" method="get">
         <i class="bi bi-box-seam" style="font-size: 1.8rem;"></i>
         <input type="text" name="hwbNo" style="width: 100%" class="" placeholder="-를 제외한 숫자만 입력해주세요." aria-label="Username" aria-describedby="basic-addon1">
         <button type="submit" class="btn btn-success"><i class="bi bi-search"></i></button>

@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <th:block th:insert="~{layout/header}"></th:block>
+</head>
+<body class="container mt-3">
+<div class="d-flex flex-wrap">
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+    <h2 class="text-center">해외</h2>
+    <table class="table p-1 m-3">
+      <thead>
+      <tr>
+        <th scope="col">배송번호</th>
+        <th scope="col">배송국</th>
+        <th scope="col">일자/시간</th>
+        <th scope="col">배송상태</th>
+        <th scope="col">상세정보</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="item, i : ${eftList}">
+        <th scope="row" th:text="${item.get(item.size()-1).hwb}"></th>
+        <td th:text="${item.get(item.size()-1).deliveryCon}"></td>
+        <td th:text="${item.get(item.size()-1).deliveryDate}"></td>
+        <td th:text="${item.get(item.size()-1).deliveryStatus}"></td>
+        <td>
+          <form id="myForm2" action="/trackingInfo" method="get" target="_blank">
+            <input th:value="${item.get(item.size()-1).hwb}" hidden="hidden" type="text" name="hwbNo" style="width: 100%" class="" placeholder="-를 제외한 숫자만 입력해주세요." aria-label="Username" aria-describedby="basic-addon1">
+            <button id="detail" type="submit" class="btn btn-success"><i class="bi bi-search"></i></button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+    <h2 class="text-center">국내</h2>
+    <table class="table m-3">
+      <thead>
+      <tr>
+        <th scope="col">배송번호</th>
+        <th scope="col">지역</th>
+        <th scope="col">일자/시간</th>
+        <th scope="col">배송상태</th>
+        <th scope="col">상세정보</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="item : ${cjList}">
+        <th scope="row" th:text="${item.get(0).hwb}"></th>
+        <td th:text="${item.get(0).area}"></td>
+        <td th:text="${item.get(0).date} + ${item.get(0).time}"></td>
+        <td th:text="${item.get(0).status}"></td>
+        <td>
+          <form id="#myForm2" action="/trackingInfo" method="get" target="_blank">
+            <input th:value="${item.get(item.size()-1).hwb}" hidden="hidden" type="text" name="hwbNo" style="width: 100%" class="" placeholder="-를 제외한 숫자만 입력해주세요." aria-label="Username" aria-describedby="basic-addon1">
+            <button id="#detail" type="submit" class="btn btn-success"><i class="bi bi-search"></i></button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
+<script th:inline="javascript">
+  document.getElementById("submitButton").addEventListener("click", () => {
+    document.getElementById("myForm").submit();
+  });
+  document.getElementById("detail").addEventListener("click", () => {
+    document.getElementById("myForm2").submit();
+  });
+</script>

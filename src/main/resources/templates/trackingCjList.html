@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <th:block th:insert="~{layout/header}"></th:block>
+    </head>
+</head>
+<body style="background: rgb(245, 245, 245);">
+<div class="container-sm text-center">
+    <br/>
+    <div>
+        <div th:if="${endStatus == '1'}">
+        <img src="/images/1.png" class="img-fluid" alt="...">
+        </div>
+        <div th:if="${endStatus == '2'}">
+            <img src="/images/2.png" class="img-fluid" alt="...">
+        </div>
+        <div th:if="${endStatus == '3'}">
+            <img src="/images/3.png" class="img-fluid" alt="...">
+        </div>
+        <div th:if="${endStatus == '4'}">
+            <img src="/images/4.png" class="img-fluid" alt="...">
+        </div>
+        <div th:if="${endStatus == '5'}">
+            <img src="/images/5.png" class="img-fluid" alt="...">
+        </div>
+        <div th:if="${endStatus == '6'}">
+            <img src="/images/6.png" class="img-fluid" alt="...">
+        </div>
+        <div th:if="${endStatus == '7'}">
+            <img src="/images/7.png" class="img-fluid" alt="...">
+        </div>
+        <div th:if="${endStatus == '8'}">
+            <img src="/images/8.png" class="img-fluid" alt="...">
+        </div>
+    </div>
+    <div class="card rounded-pill p-3 border-bottom">
+        <div class="form-group text-center">
+            <strong><h1 style="border-bottom: 1px solid #dee2e6;" th:text="${endTracking.getStatus()}"></h1></strong>
+        </div>
+        <div class="card-body">
+            <div class="col-12 d-flex flex-wrap align-items-center">
+                <div class="col-12 col-sm-12 col-md-4">
+                    <strong><h4 th:text="${endTracking.getDate()}"></h4></strong>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+                    <strong><h4 th:text="${endTracking.getTime()}"></h4></strong>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+                    <strong><h4 th:text="${endTracking.getArea()}"></h4></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-1">
+        <p>
+            <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="bi bi-arrow-bar-down"> details</i>
+            </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <div th:each="item : ${trackingCjDtos}" class="d-flex flex-wrap">
+                    <div class="col-12 p-1">
+                        <div class="input-group mb-3">
+                            <div class="col-12 p-1">
+                                <div class="p-3 border d-flex rounded-pill flex-wrap">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+                                        <h6 th:text="${item.getDate()+'/'+item.getTime()}"></h6>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+                                        <h6 th:text="${item.getArea()}"></h6>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+                                        <h6 th:text="${item.getStatus()}"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

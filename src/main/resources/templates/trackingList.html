@@ -4,10 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <th:block th:include="~{layout/header}"></th:block>
-<!--    <div class="card-header text-center">-->
-<!--      <strong><h2><p class="font-weight-bold">실시간 배송정보</p></h2></strong>-->
-<!--    </div>-->
+    <th:block th:insert="~{layout/header}"></th:block>
   </head>
 </head>
 <body>
@@ -15,18 +12,18 @@
 <br/>
   <div class="card rounded-pill p-3 border-bottom">
       <div class="form-group text-center">
-        <strong><h1 th:text="${trackingDto.deliveryStatus}"></h1></strong>
+        <strong><h1 style="border-bottom: 1px solid #dee2e6;" th:text="${endStatus.deliveryStatus}"></h1></strong>
       </div>
     <div class="card-body">
-      <div class="d-flex align-items-center">
-        <div class="col-4">
-          <strong><h4 th:text="${trackingDto.deliveryCode}"></h4></strong>
+      <div class="col-12 d-flex flex-wrap align-items-center">
+        <div class="col-12 col-sm-12 col-md-4">
+          <strong><h4 th:text="${hwbNo}"></h4></strong>
         </div>
-        <div class="col-4">
-          <strong><h4 th:text="${trackingDto.agentName}"></h4></strong>
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+          <strong><h4 th:text="${endStatus.deliveryDate}"></h4></strong>
         </div>
-        <div class="col-4">
-          <strong><h4 th:text="${trackingDto.deliveryCon}"></h4></strong>
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+          <strong><h4 th:text="${endStatus.deliveryCon}"></h4></strong>
         </div>
       </div>
       </div>
@@ -39,7 +36,48 @@
       </p>
       <div class="collapse" id="collapseExample">
         <div class="card card-body">
-          Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+          <div class="d-flex">
+            <div class="col-4 p-1">
+              <div class="text-center">
+               <h5>Date/Time</h5>
+              </div>
+            </div>
+            <div class="col-4 p-1">
+              <div class="text-center">
+                <h5>Area</h5>
+              </div>
+            </div>
+            <div class="col-4 p-1">
+              <div class="text-center">
+                <h5>Status</h5>
+              </div>
+            </div>
+          </div>
+          <div th:each="item : ${trackingDetailDto}" class="d-flex flex-wrap">
+            <div class="col-12 p-1">
+                <div class="p-3 border d-flex rounded-pill flex-wrap">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+                        <h6 th:text="${item.deliveryDate}"></h6>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+                        <h6 th:text="${item.deliveryCon}"></h6>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 clo-xl-4">
+                        <h6 th:text="${item.deliveryStatus}"></h6>
+                    </div>
+                </div>
+            </div>
+<!--            <div class="col-4 p-1">-->
+<!--              <div class="input-group mb-3">-->
+<!--                <input disabled="true" th:value="${item.getDeliveryCon()}" type="text" class="form-control rounded-pill text-center" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-4 p-1">-->
+<!--              <div class="input-group mb-3">-->
+<!--                <input disabled="true" th:value="${item.getDeliveryStatus()}" type="text" class="form-control rounded-pill text-center" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">-->
+<!--              </div>-->
+<!--            </div>-->
+          </div>
         </div>
       </div>
     </div>
