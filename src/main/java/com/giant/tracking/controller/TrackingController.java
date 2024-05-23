@@ -53,6 +53,13 @@ public class TrackingController {
         return "tracking";
     }
 
+    @GetMapping("/test")
+    public String test() {
+        Map m = new HashMap();
+        if(true) throw new NullPointerException();
+        return "";
+    }
+
     @GetMapping("/trackingInfo")
     public String trackingInfo(Model model, @RequestParam("hwbNo") String hwbNo) {
         if(hwbNo.contains("BIGC")) {
